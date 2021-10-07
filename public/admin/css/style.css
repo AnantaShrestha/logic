@@ -19403,4 +19403,21 @@ html[dir="rtl"] [direction="rtl"][data-sidebar-style="compact"]:not([data-layout
     [data-theme-version="dark"] .footer .copyright p {
       color: #fff; }
 
-/*# sourceMappingURL=style.css.map */
+
+.form-control {
+  height: 45px !important;
+}
+.form-group label {
+  color: #686868;
+}
+.permission-wrapper{
+  margin-top: 20px;
+}
+.permission-wrapper p{
+  margin-bottom: 0px;
+}
+.permission-wrapper p span{
+  display: inline-block;
+  margin-left:10px;
+  font-size: 16px;
+}

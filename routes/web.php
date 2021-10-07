@@ -16,3 +16,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::group(['prefix'=>ADMIN_TEMPLATE_PREFIX],function(){
+    Route::get('index',[App\Http\Controllers\Admin\IndexController::class,'index'])->name('admin.index');
+    foreach(glob(__DIR__.'/adminroutes/*.php') as $filename){
+        require_once $filename;
+    }
+});
