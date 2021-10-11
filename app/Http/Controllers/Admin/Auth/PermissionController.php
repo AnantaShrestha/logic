@@ -14,7 +14,7 @@ class PermissionController extends BackendController{
 
 	public function index(){
 		$data=[
-			'permission'=>$this->permissionrepo->getAll()
+			'permissions'=>$this->permissionrepo->getPermission()
 		];
 		return view($this->ADMINTEMPLATEROOT.'auth.permission.index')
 		->with($data);
@@ -33,8 +33,9 @@ class PermissionController extends BackendController{
 		$this->permissionrepo->savePermission($request);
 		return redirect()
 		->route('permission.index')
-		->with('message','Permission Created Successfully');
+		->with(['message','Permission Updated Successfully','type'=>'success']);
 	}
+	
 	public function edit($id){
 		$data=[
 			'permission'=>$this->permissionrepo->findPermission($id),
@@ -48,6 +49,13 @@ class PermissionController extends BackendController{
 		$this->permissionrepo->updatePermission($request,$id);
 		return redirect()
 		->route('permission.index')
-		->with('message','Permission Updated Successfully');
+		->with(['message','Permission Updated Successfully','type'=>'success']);
 	}	
+
+	public function delete($id){
+		$this->permissionrepo->deletePermission($id);
+		return redirect()
+		->back()
+		->with(['message','Permission Deleted Successfully','type'=>'danger']);
+	}
 }

@@ -8,8 +8,8 @@ class PermissionRepo implements PermissionInterface{
 		$this->permission=$permission;
 	}	
 
-	public function getAll(){
-		return $this->permission->all();
+	public function getPermission(){
+		return $this->permission->getPermission();
 	}
 
 	public function savePermission(Request $request){
@@ -22,5 +22,9 @@ class PermissionRepo implements PermissionInterface{
 
 	public function updatePermission(Request $request,$id){
 		return $this->permission->updatePermission($request,$id);
+	}
+
+	public function deletePermission($id){
+		return $this->permission->deletePermission($id);
 	}
 }

@@ -21,12 +21,12 @@
 		</div>
 		<div class="card-body">
 			<div class="basic-form">
-				{!! Form::open(['url' => $url]) !!}
+				{!! Form::open(['url' => $url,'class'=>'form-data']) !!}
 
 				<div class="form-row">
 					<div class="form-group col-md-6">
 						{!! Form::label('name', 'Permission Name') !!}
-						{!! Form::text('name',old('name',$permission['name'] ?? ''),['class'=>'form-control','placeholder'=>'Permission Name']) !!}
+						{!! Form::text('name',old('name',$permission['name'] ?? ''),['class'=>'form-control','placeholder'=>'Permission Name','data-required'=>'required']) !!}
 						@if ($errors->has('name'))
 
 						<span class="text-danger">{{ $errors->first('name') }}</span>
@@ -50,3 +50,6 @@
 	</div>
 </div>
 @endsection
+@push('scripts')
+	@include($ADMINTEMPLATEROOT.'scripts.validation')
+@endpush

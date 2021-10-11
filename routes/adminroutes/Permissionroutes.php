@@ -6,4 +6,5 @@ Route::group(['prefix'=>'permission'],function(){
 	Route::post('create',[App\Http\Controllers\Admin\Auth\PermissionController::class,'store'])->name('permission.store');
 	Route::get('edit/{id}',[App\Http\Controllers\Admin\Auth\PermissionController::class,'edit'])->name('permission.edit');
 	Route::post('edit/{id}',[App\Http\Controllers\Admin\Auth\PermissionController::class,'update'])->name('permission.update');
+	Route::get('delete/{id}',[App\Http\Controllers\Admin\Auth\PermissionController::class,'delete'])->name('permission.delete');
 });

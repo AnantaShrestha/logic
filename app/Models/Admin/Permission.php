@@ -20,6 +20,11 @@ class Permission extends Model
         return $this->belongsToMany(Adminuser::class,'admin_permission', 'permission_id', 'admin_id');
     }
 
+    public function getPermission(){
+        return self::orderBy('created_at','desc')
+        ->paginate(PAGINATION_NUMBER);
+    }
+
     public function savePermission($data){
         $data=[
             'name' => $data->name,
@@ -37,5 +42,10 @@ class Permission extends Model
         ];
         return self::where('id',$id)->update($data);
     }
+
+    public function deletePermission($id){
+        return self::where('id',$id)
+                ->delete();
+    }   
 
 }

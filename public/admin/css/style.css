@@ -19421,3 +19421,7 @@ html[dir="rtl"] [direction="rtl"][data-sidebar-style="compact"]:not([data-layout
   margin-left:10px;
   font-size: 16px;
 }
+.error-validation {
+  font-size: 12px;
+  color: red;
+}
