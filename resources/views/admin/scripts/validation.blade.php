@@ -4,7 +4,7 @@
 		this.createNewElement=function(element){
 			let message='This field is required'
 			element.classList.add('error-validation')
-			element.innerHTML = message
+			element.innerHTML = '<i class="fa fa-times-circle-o"></i>&nbsp;'+message
 			return element
 		},
 		this.helperFunction=function(selector,event){

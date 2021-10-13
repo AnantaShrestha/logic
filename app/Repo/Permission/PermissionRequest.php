@@ -11,7 +11,7 @@ class PermissionRequest extends FormRequest{
 
 	public function rules(){
 		return [
-			'name'=>'required',
+			'name'=>'required|unique:permissions,name,'.$this->id,
 			'slug'=>'nullable',
 			'http_uri'=>'nullable'
 		];

@@ -25,6 +25,15 @@ class Permission extends Model
         ->paginate(PAGINATION_NUMBER);
     }
 
+    public function getTableData($data){
+        $query=$data['query'];
+        $query=str_replace(" ", "%", $query);
+        return self::where('id', 'like', '%'.$query.'%')
+        ->orWhere('name', 'like', '%'.$query.'%')
+        ->orderBy('created_at','desc')
+        ->paginate(PAGINATION_NUMBER);
+    }
+
     public function savePermission($data){
         $data=[
             'name' => $data->name,

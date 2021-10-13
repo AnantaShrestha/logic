@@ -19,8 +19,15 @@ Route::get('/', function () {
 
 
 Route::group(['prefix'=>ADMIN_TEMPLATE_PREFIX],function(){
-    Route::get('index',[App\Http\Controllers\Admin\IndexController::class,'index'])->name('admin.index');
-    foreach(glob(__DIR__.'/adminroutes/*.php') as $filename){
-        require_once $filename;
-    }
+    Route::get('app_login',[App\Http\Controllers\Admin\Auth\LoginController::class,'loginForm'])->name('admin.login');
+    Route::post('app_login',[App\Http\Controllers\Admin\Auth\LoginController::class,'loginProcess'])->name('admin.login');
+    Route::get('app_logout',[App\Http\Controllers\Admin\Auth\LoginController::class,'getLogout'])->name('admin.logout');
+
+    Route::group(['middleware'=>ADMIN_MIDDLEWARE],function(){
+        Route::get('index',[App\Http\Controllers\Admin\IndexController::class,'index'])->name('admin.index');
+        foreach(glob(__DIR__.'/adminroutes/*.php') as $filename){
+            require_once $filename;
+        }
+    });
+    
 });

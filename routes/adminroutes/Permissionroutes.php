@@ -2,6 +2,7 @@
 
 Route::group(['prefix'=>'permission'],function(){
 	Route::get('index',[App\Http\Controllers\Admin\Auth\PermissionController::class,'index'])->name('permission.index');
+	Route::get('pagination',[App\Http\Controllers\Admin\Auth\PermissionController::class,'datatable'])->name('permission.pagination');
 	Route::get('create',[App\Http\Controllers\Admin\Auth\PermissionController::class,'create'])->name('permission.create');
 	Route::post('create',[App\Http\Controllers\Admin\Auth\PermissionController::class,'store'])->name('permission.store');
 	Route::get('edit/{id}',[App\Http\Controllers\Admin\Auth\PermissionController::class,'edit'])->name('permission.edit');

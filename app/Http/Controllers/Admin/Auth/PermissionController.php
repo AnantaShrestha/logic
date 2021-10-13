@@ -20,6 +20,16 @@ class PermissionController extends BackendController{
 		->with($data);
 	}
 
+	public function datatable(){
+
+		$data=[
+			'permissions'=>$this->permissionrepo->dataTable(request())
+		];
+		return view($this->ADMINTEMPLATEROOT.'auth.permission.table-listing')
+		->with($data)
+		->render();
+	}
+
 	public function create(){
 		$data=[
 			'permission'=>[],

@@ -12,6 +12,10 @@ class PermissionRepo implements PermissionInterface{
 		return $this->permission->getPermission();
 	}
 
+	public function dataTable(Request $request){
+		return $this->permission->getTableData($request);
+	}
+
 	public function savePermission(Request $request){
 		return $this->permission->savePermission($request);
 	}

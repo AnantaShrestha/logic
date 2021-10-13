@@ -19,12 +19,14 @@ trait AdminroutelistTrait{
 						return Str::startsWith($route->uri, $exp);
 					})) {
 						$urlArr=explode('/',$route->uri);
-						$childRoutes[$urlArr[1]][$urlArr[2]]=$route->uri;
+						if(!empty($urlArr) && isset($urlArr[1]) && isset($urlArr[2])){
+							$childRoutes[$urlArr[1]][$urlArr[2]]=$route->uri;
+						}
 					}
 				}
 			}
-		}
 
+		}
 		return array_merge_recursive($adminRoutes,$childRoutes);
 	}
 
@@ -32,7 +34,10 @@ trait AdminroutelistTrait{
     {
         $prefix = ADMIN_TEMPLATE_PREFIX ? ADMIN_TEMPLATE_PREFIX.'/' : '';
         return [
-            $prefix . 'index',
+        	$prefix.'app_login',
+        	$prefix.'app_logout',
+            $prefix.'index',
+            $prefix.'permission/pagination'
         ];
     }
 }
