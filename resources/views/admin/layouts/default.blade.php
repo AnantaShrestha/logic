@@ -8,6 +8,8 @@
     <title>Admin Dashboard</title>
     <!-- Favicon icon -->
     <link href="{{asset('admin/css/style.css')}}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{asset('admin/vendor/sweetalert2/dist/sweetalert2.min.css')}}">
+    @stack('style')
 </head>
 <body>
     <div id="preloader">
@@ -31,6 +33,8 @@
     <script src="{{asset('admin/vendor/global/global.min.js')}}"></script>
     <script src="{{asset('admin/js/quixnav-init.js')}}"></script>
     <script src="{{asset('admin/js/custom.min.js')}}"></script>
+    <script src="{{asset('admin/vendor/sweetalert2/dist/sweetalert2.min.js')}}"></script>
+    @include($ADMINTEMPLATEROOT.'scripts.alertmessage')
     @stack('scripts')
 </body>
 

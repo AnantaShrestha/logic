@@ -8,6 +8,10 @@ class PermissionRepo implements PermissionInterface{
 		$this->permission=$permission;
 	}	
 
+	public function getAll(){
+		return $this->permission->all();
+	}
+
 	public function getPermission(){
 		return $this->permission->getPermission();
 	}
@@ -17,7 +21,12 @@ class PermissionRepo implements PermissionInterface{
 	}
 
 	public function savePermission(Request $request){
-		return $this->permission->savePermission($request);
+		$data=[
+			'name' => $request->name,
+			'slug' => $request->slug ?? \Str::slug($request->name),
+			'http_uri' => implode(',', ($request->http_uri ?? [])),
+		];
+		return $this->permission->savePermission($data);
 	}
 
 	public function findPermission($id){
@@ -25,7 +34,12 @@ class PermissionRepo implements PermissionInterface{
 	}
 
 	public function updatePermission(Request $request,$id){
-		return $this->permission->updatePermission($request,$id);
+		$data=[
+            'name' => $request->name,
+            'slug' => $request->slug ?? \Str::slug($request->name),
+            'http_uri' => implode(',', ($request->http_uri ?? [])),
+        ];
+		return $this->permission->updatePermission($data,$id);
 	}
 
 	public function deletePermission($id){

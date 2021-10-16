@@ -18,6 +18,7 @@
 									<th>S.No</th>
 									<th>Permission Name</th>
 									<th class="width-50">List of Permission</th>
+									<th>Created At</th>
 									<th>Action</th>
 								</tr>
 							</thead>

@@ -13,13 +13,14 @@
                 $urlArr=explode('/',$uri);
                 @endphp
                     @if(!empty($urlArr))
-                        <span class="badge badge-success mb-10">{{  (@$urlArr[2] == 'index') ? 'View' : ucfirst($urlArr[2])}} {{ucfirst(@$urlArr[1])}} </span>
+                        <span class="badge badge-success mb-10">{{  (@$urlArr[2] == 'index') ? 'View' : ucfirst(@$urlArr[2])}} {{ucfirst(@$urlArr[1])}} </span>
                     @endif
                 @endforeach
             </td>
+            <td>{{$permission->created_at->diffForHumans()}}</td>
             <td>
                 <a class="btn btn-primary" href="{{route('permission.edit',['id'=>$permission->id])}}">Edit</a>
-                <a class="btn btn-danger" href="{{route('permission.delete',['id'=>$permission->id])}}">Delete</a>
+                <a class="btn btn-danger deleteAction" href="{{route('permission.delete',['id'=>$permission->id])}}">Delete</a>
             </td>
 
         </tr>

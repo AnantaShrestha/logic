@@ -35,20 +35,10 @@ class Permission extends Model
     }
 
     public function savePermission($data){
-        $data=[
-            'name' => $data->name,
-            'slug' => $data->slug ?? \Str::slug($data->name),
-            'http_uri' => implode(',', ($data->http_uri ?? [])),
-        ];
         return self::create($data);
     }
 
     public function updatePermission($data,$id){
-        $data=[
-            'name' => $data->name,
-            'slug' => $data->slug ?? \Str::slug($data->name),
-            'http_uri' => implode(',', ($data->http_uri ?? [])),
-        ];
         return self::where('id',$id)->update($data);
     }
 

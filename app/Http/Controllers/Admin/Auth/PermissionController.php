@@ -43,7 +43,7 @@ class PermissionController extends BackendController{
 		$this->permissionrepo->savePermission($request);
 		return redirect()
 		->route('permission.index')
-		->with(['message','Permission Updated Successfully','type'=>'success']);
+		->with(['message'=>'Permission added Successfully','type'=>'success']);
 	}
 	
 	public function edit($id){
@@ -59,13 +59,14 @@ class PermissionController extends BackendController{
 		$this->permissionrepo->updatePermission($request,$id);
 		return redirect()
 		->route('permission.index')
-		->with(['message','Permission Updated Successfully','type'=>'success']);
+		->with(['message'=>'Permission updated Successfully','type'=>'success']);
 	}	
 
-	public function delete($id){
-		$this->permissionrepo->deletePermission($id);
-		return redirect()
-		->back()
-		->with(['message','Permission Deleted Successfully','type'=>'danger']);
+	public function delete(){
+		if(request()->ajax()){
+			$id=request()->id;
+			$this->permissionrepo->deletePermission($id);
+			return response()->json(['message'=>'Permission deleted Successfully','type'=>'success']);
+		}
 	}
 }

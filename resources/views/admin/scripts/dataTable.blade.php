@@ -11,7 +11,7 @@
 					  		document.querySelector('#table-data').innerHTML=xhr.response
 					    }
 					    else{
-					       	console.log(`Request failed, this is the response: ${xhr.responseText}`)
+					       	//console.log(`Request failed, this is the response: ${xhr.responseText}`)
 					    }
 				 	};
 				xhr.send()
@@ -21,6 +21,7 @@
 				query,
 				hiddenPage=document.querySelector('#hidden_page')
 				search=document.querySelector('#dataTableSearch')
+				count=0
 				search.addEventListener('keyup',function(event){
 					page=1
 					query=this.value
@@ -28,14 +29,16 @@
 				})
 			Array.from(selector).forEach(function(element,index){
 				document.addEventListener('click',function(event){
-					if(event.target.matches('a[class="paginate-item"]')){
+					if(event.target.matches('a[class="paginate-item"]') && index==0){
 						event.preventDefault()
+						console.log(count)
 						let url=event.target.getAttribute('href')
 						if(url){
 							page=url.split('page=')[1]
 							_this.apiRequest(page,query='')
 						}
 					}
+
 					
 				})
 			})

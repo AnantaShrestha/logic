@@ -2,6 +2,7 @@
 namespace App\Repo\Permission;
 use Illuminate\Http\Request;
 interface PermissionInterface{
+	public function getAll();
 	public function getPermission();
 	public function dataTable(Request $request);
 	public function savePermission(Request $request);

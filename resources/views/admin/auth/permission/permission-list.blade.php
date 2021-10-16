@@ -17,4 +17,4 @@
 		</div>
 	</div>
 	@endforeach
-</div>l
+</div>

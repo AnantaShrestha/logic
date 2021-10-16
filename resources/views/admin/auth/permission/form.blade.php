@@ -1,6 +1,6 @@
 @extends($ADMINTEMPLATEROOT.'layouts.default')
 @php
-	$url=(isset($permission) && empty($permission)) ? route('permission.store') : route('permission.update',['id'=>$permission['id']]);
+	$url=(isset($permission) && !empty($permission)) ? route('permission.update',['id'=>$permission['id']]) : route('permission.store');
 @endphp
 @section('content')
 <div class="container-fluid">

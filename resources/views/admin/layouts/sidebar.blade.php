@@ -14,7 +14,7 @@
                         <ul aria-expanded="false">
                             <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Roles</a>
                                 <ul aria-expanded="false">
-                                    <li><a href="#">Create</a></li>
+                                    <li><a href="{{route('role.create')}}">Create</a></li>
                                     <li><a href="{{route('role.index')}}">List</a></li>
                                 </ul>
                             </li>

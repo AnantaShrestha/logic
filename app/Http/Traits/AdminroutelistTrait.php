@@ -37,7 +37,8 @@ trait AdminroutelistTrait{
         	$prefix.'app_login',
         	$prefix.'app_logout',
             $prefix.'index',
-            $prefix.'permission/pagination'
+            $prefix.'permission/pagination',
+            $prefix.'role/pagination'
         ];
     }
 }

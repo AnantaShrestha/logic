@@ -1,4 +1,10 @@
 <?php
 Route::group(['prefix'=>'role'],function(){
 	Route::get('index',[App\Http\Controllers\Admin\Auth\RoleController::class,'index'])->name('role.index');
+	Route::get('pagination',[App\Http\Controllers\Admin\Auth\RoleController::class,'datatable'])->name('role.pagination');
+	Route::get('create',[App\Http\Controllers\Admin\Auth\RoleController::class,'create'])->name('role.create');
+	Route::post('create',[App\Http\Controllers\Admin\Auth\RoleController::class,'store'])->name('role.store');
+	Route::get('edit/{id}',[App\Http\Controllers\Admin\Auth\RoleController::class,'edit'])->name('role.edit');
+	Route::post('edit/{id}',[App\Http\Controllers\Admin\Auth\RoleController::class,'update'])->name('role.update');
+	Route::get('delete/{id}',[App\Http\Controllers\Admin\Auth\RoleController::class,'delete'])->name('role.delete');
 });
