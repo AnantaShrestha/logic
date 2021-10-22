@@ -3,9 +3,14 @@ namespace App\Http\Traits;
 use Illuminate\Support\Str;
 trait AdminroutelistTrait{
 	public function routeList(){
+		
+		$routes=\Route::getRoutes()->getRoutesByMethod();
+		$routes=array_merge($routes['GET'],$routes['POST']);
+		return $this->filterRoute($routes);
+	}
+	public function filterRoute($routes){
 		$adminRoutes;
 		$childRoutes;
-		$routes=\Route::getRoutes()->getRoutesByMethod()['GET'];	
 		foreach($routes as $route){
 			if (Str::startsWith($route->uri(), ADMIN_TEMPLATE_PREFIX )) {
 				$prefix = ADMIN_TEMPLATE_PREFIX ? $route->getPrefix() : ltrim($route->getPrefix(),'/');
@@ -38,7 +43,8 @@ trait AdminroutelistTrait{
         	$prefix.'app_logout',
             $prefix.'index',
             $prefix.'permission/pagination',
-            $prefix.'role/pagination'
+            $prefix.'role/pagination',
+            $prefix.'user/pagination'
         ];
     }
 }

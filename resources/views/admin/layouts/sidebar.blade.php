@@ -9,7 +9,19 @@
                         </ul>
                     </li>
                     <li class="nav-label">Settings</li>
-                    <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
+                    <li>
+                        <a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
+                                class="icon icon-app-store"></i><span class="nav-text">Admin Global</span></a>
+                        <ul aria-expanded="false">
+                            <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Admin Menu</a>
+                                <ul aria-expanded="false">
+                                    <li><a href="{{route('menu.index')}}">List</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
                                 class="icon icon-single-04"></i><span class="nav-text">User Management</span></a>
                         <ul aria-expanded="false">
                             <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Roles</a>
@@ -26,8 +38,8 @@
                             </li>
                              <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">User</a>
                                 <ul aria-expanded="false">
-                                    <li><a href="#">Create</a></li>
-                                    <li><a href="#">List</a></li>
+                                    <li><a href="{{route('user.create')}}">Create</a></li>
+                                    <li><a href="{{route('user.index')}}">List</a></li>
                                 </ul>
                             </li>
                         </ul>

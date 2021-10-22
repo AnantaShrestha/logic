@@ -22,4 +22,40 @@ class Adminuser extends Model implements AuthenticatableContract{
     {
         return $this->belongsToMany(Permission::class,'admin_permission', 'admin_id', 'permission_id');
     }
+
+    public function setPasswordAttribute($value)
+    {
+        $this->attributes['password'] = bcrypt($value);
+    }
+
+    public function saveUser($data){
+        return self::create($data);
+    }
+
+    public function getUser(){
+        return self::with('permissions','roles')->orderBy('created_at','desc')
+        ->paginate(PAGINATION_NUMBER);
+    }
+
+    public function getTableData($data){
+        $query=$data['query'];
+        $query=str_replace(" ", "%", $query);
+        return self::where('id', 'like', '%'.$query.'%')
+        ->orWhere('name', 'like', '%'.$query.'%')
+        ->orWhere('username', 'like', '%'.$query.'%')
+        ->orderBy('created_at','desc')
+        ->with('permissions','roles')
+        ->paginate(PAGINATION_NUMBER);
+    }
+
+    public function updateUser($data,$id){
+        $user=self::findOrFail($id);
+        $user->update($data);
+        return $user;
+    }
+    public function deleteUser($id){
+       $user=self::findOrFail($id);
+       $user->delete();
+       return $user;
+    }
 }

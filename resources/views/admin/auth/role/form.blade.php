@@ -4,17 +4,6 @@
 @endphp
 @section('content')
 <div class="container-fluid">
-	<div class="row page-titles mx-0">
-		<div class="col-sm-6 p-md-0">
-		</div>
-		<div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
-			<ol class="breadcrumb">
-				<li class="breadcrumb-item"><a href="javascript:void(0)">Dashboard</a></li>
-				<li class="breadcrumb-item"><a href="javascript:void(0)">Role</a></li>
-				<li class="breadcrumb-item active"><a href="javascript:void(0)">Create Role</a></li>
-			</ol>
-		</div>
-	</div>
 	<div class="card">
 		<div class="card-header">
 			<h4 class="card-title">{{(isset($role) && empty($role)) ? 'Create Role' : 'Edit Role'}}</h4>
@@ -26,7 +15,7 @@
 				<div class="form-row">
 					<div class="form-group col-md-6">
 						{!! Form::label('name', 'Role Name') !!}
-						{!! Form::text('name',old('name',$role['name'] ?? ''),['class'=>'form-control','placeholder'=>'Role Name','data-required'=>'required']) !!}
+						{!! Form::text('name',old('name',$role['name'] ?? ''),['class'=>'form-control','placeholder'=>'Role Name','data-validation'=>'required']) !!}
 						@if ($errors->has('name'))
 
 						<span class="text-danger">{{ $errors->first('name') }}</span>

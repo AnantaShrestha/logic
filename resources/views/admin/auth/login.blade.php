@@ -20,7 +20,7 @@
                         <div class="row no-gutters">
                             <div class="col-xl-12">
                                 <div class="auth-form">
-                                    {!! Form::open(['url'=>route('admin.login'),'class'=>'form-data']) !!}
+                                    {!! Form::open(['url'=>route('admin.loginProcess'),'class'=>'form-data']) !!}
                                         <div class="form-group">
                                             <strong>{!! Form::label('username', 'Username') !!}</strong>
                                             {!! Form::text('username',old('username'),['class'=>'form-control','placeholder'=>'Username','data-required'=>'required']) !!}

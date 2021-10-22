@@ -20,7 +20,7 @@ Route::get('/', function () {
 
 Route::group(['prefix'=>ADMIN_TEMPLATE_PREFIX],function(){
     Route::get('app_login',[App\Http\Controllers\Admin\Auth\LoginController::class,'loginForm'])->name('admin.login');
-    Route::post('app_login',[App\Http\Controllers\Admin\Auth\LoginController::class,'loginProcess'])->name('admin.login');
+    Route::post('app_login',[App\Http\Controllers\Admin\Auth\LoginController::class,'loginProcess'])->name('admin.loginProcess');
     Route::get('app_logout',[App\Http\Controllers\Admin\Auth\LoginController::class,'getLogout'])->name('admin.logout');
 
     Route::group(['middleware'=>ADMIN_MIDDLEWARE],function(){

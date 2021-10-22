@@ -10,16 +10,6 @@
 	this.deleteActionInitial=function(){
 		let _this=this
 		this.apiRequest=function(id,url,target){
-			/*$.ajax({
-				url:url,
-				type:'get',
-				data:{
-					id:id
-				},
-				success:function(response){
-
-				}
-			})*/
 			swal({
 	            title: "Delete?",
 	            text: "Please ensure and then confirm!",

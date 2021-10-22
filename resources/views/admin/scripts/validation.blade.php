@@ -1,32 +1,68 @@
 <script>
 	this.validationInitial=function(){
 		let _this=this
-		this.createNewElement=function(element){
-			let message='This field is required'
+		this.createNewElement=function(element,message){
 			element.classList.add('error-validation')
 			element.innerHTML = '<i class="fa fa-times-circle-o"></i>&nbsp;'+message
 			return element
 		},
-		this.helperFunction=function(selector,event){
+		this.validationCondition=function(target,validationType,value){
+			let message={
+				required : 'This field is required',
+				email : 'Invalid email format',
+				confirmation : 'Confirm password did not match'
+
+			};
+			let createElement=document.createElement('p')
+			if(value=='' && validationType.includes('required')){
+				event.preventDefault()
+				target.append(_this.createNewElement(createElement,message.required))
+			}
+			if(validationType.includes('email') && value){
+				let mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+				if(!value.match(mailformat)){
+					event.preventDefault()
+					target.append(_this.createNewElement(createElement,message.email))
+				}
+			}
+			if(validationType.includes('confirm') && value){
+				let confirmInput=document.querySelector('input[name="password_confirmation"]')
+				if(confirmInput){
+					if(confirmInput.value){
+						if(value != confirmInput.value){
+							event.preventDefault()
+							target.append(_this.createNewElement(createElement,message.confirmation))
+						}
+					}
+				}
+			}
+		},
+		this.helperFunction=function(selector){
 			selector.forEach(function(target,key){
-				let input = target.querySelector('input'),
-					required = input.getAttribute('data-required'),
-					value=input.value
-					validationErrorMessage=target.querySelector('.error-validation')
-					createElement=document.createElement('p')
-					if(validationErrorMessage){
-						validationErrorMessage.remove()
-					}
-					if(required && value== ''){
-						event.preventDefault()
-						target.append(_this.createNewElement(createElement))
-					}
+				let input = target.querySelector('input')
+				if(input.hasAttribute('data-validation')){
+					let validation=input.getAttribute('data-validation'),
+						validationType=validation.split('|')
+						value=input.value,
+						validationErrorMessage=target.querySelector('.error-validation')
+						if(validationErrorMessage || value && validationErrorMessage){
+							validationErrorMessage.remove()
+						}
+						if(validationType){
+							_this.validationCondition(target,validationType,value)
+						}
+				}
+					
 			})
+				
 		},
 		this.validationeventListener=function(selector){
 			let formGroup=selector.querySelectorAll('.form-group')
 			selector.addEventListener('submit',function(event){
-				_this.helperFunction(formGroup,event)
+				_this.helperFunction(formGroup)
+			})
+			selector.addEventListener('input',function(event){
+				_this.helperFunction(formGroup)
 			})
 		},
 		this.init=function(){
