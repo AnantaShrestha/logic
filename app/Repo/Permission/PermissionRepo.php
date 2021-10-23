@@ -30,7 +30,7 @@ class PermissionRepo implements PermissionInterface{
 	}
 
 	public function findPermission($id){
-		return $this->permission->findOrfail($id);
+		return $this->permission->findPermission($id);
 	}
 
 	public function updatePermission(Request $request,$id){

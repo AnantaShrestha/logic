@@ -1,58 +1,4 @@
-/*
-    Table of Contents
 
-    Name                 : Efron
-    Author               : Quixkit
-    Author Portfolio     : https://themeforest.net/user/quixkit/portfolio
-    
-
-
-    Table of Sass Contents
-
-    1. Abstracts
-        _bs-custom
-        _inheritance
-        _maps
-        _mixin
-        _variable
-
-    2. bootstrap 
-        -Here goes all official bootstrap scss files
-
-    3. Global/Base
-        _color
-        _custom-grid
-        _fonts
-        _helper
-        _reset
-
-    4. layout
-        +footer
-        +header
-        +rtl
-        +sidebar
-        +tables
-        +theme
-        +version-dark
-
-    5. Conponents
-        +app
-        +charts
-        +forms
-        +map
-        +uc
-        +ui
-        +widget
-
-    6. Page
-        _index-1
-        _page-error
-        _page-register
-        _page-signin
-        _page-user-lock
-        _page-user-lock
-
-*/
 @import url("https://fonts.googleapis.com/css?family=Roboto:400,500,700");
 @import url("./../icons/simple-line-icons/css/simple-line-icons.css");
 @import url("./../icons/font-awesome-old/css/font-awesome.min.css");
@@ -19523,4 +19469,37 @@ html[dir="rtl"] [direction="rtl"][data-sidebar-style="compact"]:not([data-layout
 }
 .select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
   color: #fff !important;
+}
+
+.form-group label {
+  font-size: 16px;
+  color: #111;
+  font-weight: bold;
+}
+
+.iconpicker-popover.popover {
+  opacity: 1 !important;
+  box-shadow: none !important;
+  border: 0px !important;
+}
+.dd-handle {
+ 
+  height: 40px !important;
+  line-height: 30px !important;
+  background:#5e72e4 !important;color:#fff !important;
+}
+.dd-item > button {
+  height: 31px !important;
+  color: #fff !important;
+}
+.float-right.dd-nodrag a {
+  color: #fff !important;
+}
+.menu-save-button {
+  text-align: right;
+  margin-top: 30px;
+}
+.btn.btn-success.btn-flat.menu-sort-save {
+  color: #fff;
+  font-size: 16px;
 }

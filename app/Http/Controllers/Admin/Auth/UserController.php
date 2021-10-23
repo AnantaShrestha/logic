@@ -36,7 +36,6 @@ class UserController extends BackendController{
 	
 	public function create(){
 		$data=[
-			'user'=>[],
 			'roles'=>$this->rolerepo->getAll()->pluck('name','id'),
 			'permissions'=>$this->permissionrepo->getAll()->pluck('name','id')
 		];

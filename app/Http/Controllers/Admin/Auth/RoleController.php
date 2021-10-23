@@ -33,7 +33,6 @@ class RoleController extends BackendController{
 
 	public function create(){
 		$data=[
-			'role'=>[],
 			'permissions'=>$this->permissionrepo->getAll()->pluck('name','id'),
 			'users'=>$this->userrepo->getAll()->pluck('name','id')
 		];

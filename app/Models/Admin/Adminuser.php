@@ -48,13 +48,17 @@ class Adminuser extends Model implements AuthenticatableContract{
         ->paginate(PAGINATION_NUMBER);
     }
 
+    public function findUser($id){
+        return self::findOrFail($id);
+    }
+
     public function updateUser($data,$id){
-        $user=self::findOrFail($id);
+        $user=$this->findUser($id);
         $user->update($data);
         return $user;
     }
     public function deleteUser($id){
-       $user=self::findOrFail($id);
+       $user=$this->findUser($id);
        $user->delete();
        return $user;
     }

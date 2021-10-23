@@ -38,6 +38,10 @@ class Permission extends Model
         return self::create($data);
     }
 
+    public function findPermission($id){
+        return self::findOrFail($id);
+    }
+
     public function updatePermission($data,$id){
         return self::where('id',$id)->update($data);
     }

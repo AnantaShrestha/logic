@@ -62,9 +62,8 @@ class CreateAdminTables extends Migration
             $table->integer('parent_id')->default(0);
             $table->integer('sort')->default(0);
             $table->string('title', 100);
-            $table->string('icon', 50);
+            $table->string('icon', 50)->nullable();
             $table->string('uri', 255)->nullable();
-            $table->integer('type')->default(0);
             $table->timestamps();
         });
         Schema::create('admin_log', function (Blueprint $table) {

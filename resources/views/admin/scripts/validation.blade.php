@@ -3,7 +3,7 @@
 		let _this=this
 		this.createNewElement=function(element,message){
 			element.classList.add('error-validation')
-			element.innerHTML = '<i class="fa fa-times-circle-o"></i>&nbsp;'+message
+			element.innerHTML = '<i class="fas fa-times-circle"></i>&nbsp;'+message
 			return element
 		},
 		this.validationCondition=function(target,validationType,value){
@@ -39,7 +39,7 @@
 		},
 		this.helperFunction=function(selector){
 			selector.forEach(function(target,key){
-				let input = target.querySelector('input')
+				let input = target.querySelector('input') ?? target.querySelector('select')
 				if(input.hasAttribute('data-validation')){
 					let validation=input.getAttribute('data-validation'),
 						validationType=validation.split('|')

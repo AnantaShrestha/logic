@@ -32,7 +32,6 @@ class PermissionController extends BackendController{
 
 	public function create(){
 		$data=[
-			'permission'=>[],
 			'routeList'=>$this->routeList()
 		];
 		return view($this->ADMINTEMPLATEROOT.'auth.permission.form')

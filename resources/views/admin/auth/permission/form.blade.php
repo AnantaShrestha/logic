@@ -1,6 +1,6 @@
 @extends($ADMINTEMPLATEROOT.'layouts.default')
 @php
-	$url=(isset($permission) && !empty($permission)) ? route('permission.update',['id'=>$permission['id']]) : route('permission.store');
+	$url=(isset($permission)) ? route('permission.update',['id'=>$permission['id']]) : route('permission.store');
 @endphp
 @section('content')
 <div class="container-fluid">
@@ -32,7 +32,7 @@
 					</div>
 
 				</div>
-				<button type="submit" class="btn btn-primary">{{(isset($permission) && empty($permission)) ? 'Create Permission' : 'Update Permission'}}</button>
+				<button type="submit" class="btn btn-primary">{{(isset($permission)) ? 'Update Permission' : 'Create Permission'}}</button>
 				{!! Form::close() !!}
 			</div>
 		</div>

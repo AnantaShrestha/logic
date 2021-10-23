@@ -1,5 +1,6 @@
 <?php	
-	$old_http_uri = old('http_uri',($permission) ? explode(',', $permission->http_uri) : []);
+
+	$old_http_uri = old('http_uri',(isset($permission)) ? explode(',', $permission->http_uri) : []);
 ?>
 <div class="row">
 	@foreach ($routeList as  $rootkey=>$routes)
@@ -7,7 +8,7 @@
 		<div class="permission-wrapper">
 			<h5>{{ucfirst($rootkey)}}</h5>
 				@if($rootkey=='admin')
-					<p>{!!Form::checkbox('http_uri[]',$routes['root_uri'],(in_array($routes['root_uri'],$old_http_uri)) ? true : false) !!}<span>Full Permission</span></p>
+					<p>{!!Form::checkbox('http_uri[]',$routes['root_uri'],(in_array('/'.$routes['root_uri'],$old_http_uri)) ? true : false) !!}<span>Full Control</span></p>
 				@endif
 				@foreach($routes as $key=>$route)
 					@if($key!='root_uri')

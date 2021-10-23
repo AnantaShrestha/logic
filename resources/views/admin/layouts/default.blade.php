@@ -9,6 +9,7 @@
     <!-- Favicon icon -->
     <link href="{{asset('admin/css/style.css')}}" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{asset('admin/vendor/sweetalert2/dist/sweetalert2.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
     @stack('style')
 </head>
 <body>

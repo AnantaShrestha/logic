@@ -11,7 +11,8 @@ class MenuRequest extends FormRequest{
 
 	public function rules(){
 		return [
-
+			'title'=>'required|unique:admin_menu,title,'.$this->id,
+			'parent_id'=>'required',
 		];
 	}
 }

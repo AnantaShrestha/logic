@@ -40,14 +40,18 @@ class Role extends Model
         return self::create($data);
     }
 
+    public function findRole($id){
+        return self::findOrFail($id)
+    }
+
     public function updateRole($data,$id){
-        $role=self::findOrFail($id);
+        $role=$this->findRole($id);
         $role->update($data);
         return $role;
     }
 
     public function deleteRole($id){
-        $role=self::findOrFail($id);
+        $role=$this->findRole();
         $role->delete();
         return $role;
     }

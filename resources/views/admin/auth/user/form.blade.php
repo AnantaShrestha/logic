@@ -1,6 +1,6 @@
 @extends($ADMINTEMPLATEROOT.'layouts.default')
 @php
-	$url=(isset($user) && !empty($user)) ? route('user.update',['id'=>$user['id']]) : route('user.store');
+	$url=(isset($user)) ? route('user.update',['id'=>$user['id']]) : route('user.store');
 @endphp
 @section('content')
 
@@ -51,14 +51,14 @@
 					</div>
 					<div class="form-group col-md-6">
 						{!! Form::label('roles','Select Roles') !!}
-						{!! Form::select('role[]',$roles,(isset($user) && !empty($user)) ? $user->roles->pluck('id') : old('roles')  ,['class'=>'form-control role-list','multiple'=>'multiple']) !!}
+						{!! Form::select('role[]',$roles,(isset($user)) ? $user->roles->pluck('id') : old('roles')  ,['class'=>'form-control role-list','multiple'=>'multiple']) !!}
 					</div>
 					<div class="form-group col-md-6">
 						{!! Form::label('permission', 'Select Permission') !!}
-						{!! Form::select('permission[]',$permissions,(isset($user) && !empty($user)) ? $user->permissions->pluck('id') : old('permission')  ,['class'=>'form-control permission-list','multiple'=>'multiple']) !!}
+						{!! Form::select('permission[]',$permissions,(isset($user)) ? $user->permissions->pluck('id') : old('permission')  ,['class'=>'form-control permission-list','multiple'=>'multiple']) !!}
 					</div>
 				</div>
-				<button type="submit" class="btn btn-primary">{{(isset($user) && empty($user)) ? 'Create User' : 'Update User'}}</button>
+				<button type="submit" class="btn btn-primary">{{(isset($user)) ? 'Update User' : 'Create User'}}</button>
 				{!! Form::close() !!}
 			</div>
 		</div>
