@@ -48,7 +48,7 @@ class UserRepo implements UserInterface{
 			'email'=>$request->email,
 			'password'=>$request->password
 		];
-		$user=$this->adminuser->updateUser($data);
+		$user=$this->adminuser->updateUser($data,$id);
 		$permission=$request->permission ?? [];
 		$role=$request->role ?? [];
 		if($permission)

@@ -47,7 +47,8 @@ trait AdminroutelistTrait{
             $prefix.'index',
             $prefix.'permission/pagination',
             $prefix.'role/pagination',
-            $prefix.'user/pagination'
+            $prefix.'user/pagination',
+            $prefix.'menu/sorting'
         ];
     }
 }

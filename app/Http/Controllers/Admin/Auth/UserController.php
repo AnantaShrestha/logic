@@ -60,7 +60,7 @@ class UserController extends BackendController{
 		->with($data);
 	}
 
-	public function update(Request $request,$id){
+	public function update(UserRequest $request,$id){
 		$this->userrepo->updateUser($request,$id);
 		return redirect()
 		->route('user.index')

@@ -37,5 +37,20 @@ class DatabaseSeeder extends Seeder
             (15, 10, 0, 'Create User', NULL, 'admin/user/create', '2021-10-23 02:25:58', '2021-10-23 02:25:58'),
             (16, 10, 0, 'List Of User', NULL, 'admin/user/index', '2021-10-23 02:26:27', '2021-10-23 02:26:27'),
             (17, 6, 0, 'List of Menu', NULL, 'admin/menu/index', '2021-10-23 02:26:50', '2021-10-23 02:27:03')");
+        \DB::statement("INSERT INTO `permissions` (`id`, `name`, `slug`, `http_uri`, `created_at`, `updated_at`) VALUES
+        (1, 'Administrator', 'administrator', 'admin/*', '2021-10-23 12:42:10', '2021-10-23 12:42:10'),
+        (2, 'Permission Control', 'role-permission-manager', 'admin/permission/index,admin/permission/create,admin/permission/edit/{id},admin/permission/delete/{id}', '2021-10-23 13:05:44', '2021-10-23 13:06:42'),
+        (3, 'Role Control', 'role-control', 'admin/role/index,admin/role/create,admin/role/edit/{id},admin/role/delete/{id}', '2021-10-23 13:07:01', '2021-10-23 13:07:01'),
+        (4, 'Menu Control', 'menu-control', 'admin/menu/index,admin/menu/edit/{id},admin/menu/delete/{id},admin/menu/create', '2021-10-23 13:07:19', '2021-10-23 13:07:19'),
+        (5, 'User Control', 'user-control', 'admin/user/index,admin/user/create,admin/user/edit/{id},admin/user/delete/{id}', '2021-10-23 13:07:47', '2021-10-23 13:07:47')
+        ");
+        \DB::statement("INSERT INTO `roles` (`id`, `name`, `slug`, `created_at`, `updated_at`) VALUES
+            (1, 'System Admin', 'administrator', '2021-10-23 12:42:30', '2021-10-23 12:42:30'),
+            (2, 'User Management Manager', 'user-management-manager', '2021-10-23 13:08:52', '2021-10-23 13:08:52')");
+
+        \DB::statement("INSERT INTO `admin_role` (`role_id`, `admin_id`, `created_at`, `updated_at`) VALUES
+                (1, 1, NULL, NULL)");
     }
+
+   
 }

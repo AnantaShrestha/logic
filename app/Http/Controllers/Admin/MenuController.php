@@ -54,7 +54,6 @@ class MenuController extends BackendController{
 		}
 	}
 
-
 	public function sorting(Request $request){
 		$response=$this->menurepo->menuSort($request);
 		return response()->json($response);

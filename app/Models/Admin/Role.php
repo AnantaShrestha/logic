@@ -41,7 +41,7 @@ class Role extends Model
     }
 
     public function findRole($id){
-        return self::findOrFail($id)
+        return self::findOrFail($id);
     }
 
     public function updateRole($data,$id){

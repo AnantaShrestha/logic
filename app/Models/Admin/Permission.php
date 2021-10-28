@@ -4,7 +4,7 @@ namespace App\Models\Admin;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Admin\Role;
 use App\Models\Admin\Permission;
-
+use Illuminate\Http\Request;
 class Permission extends Model
 {
     protected $table='permissions';
@@ -49,6 +49,19 @@ class Permission extends Model
     public function deletePermission($id){
         return self::where('id',$id)
                 ->delete();
-    }   
+    } 
+
+    public function passRequest(): bool{
+        if (empty($this->http_uri)) {
+            return false;
+        }
+        $uriCurrent = \Route::getCurrentRoute()->uri;
+        $urlArr = explode(',', $this->http_uri);
+        if(in_array($uriCurrent,$urlArr)){
+            return true;
+        }
+        return false;
+
+    }
 
 }

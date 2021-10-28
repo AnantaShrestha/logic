@@ -8,4 +8,8 @@ class IndexController extends BackendController{
 	public function index(){
 		return view($this->ADMINTEMPLATEROOT.'index');
 	}
+
+	public function deny(){
+		return view('errors.deny');
+	}
 }

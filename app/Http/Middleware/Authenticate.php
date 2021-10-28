@@ -16,7 +16,7 @@ class Authenticate extends Middleware
     public function handle($request, Closure $next)
     {
         $redirectTo = route('admin.login');
-        if (Auth::guard('admin')->guest() && !$this->shouldPassThrough($request)) {
+        if (!Auth::guard('admin')->guest() && !$this->shouldPassThrough($request)) {
             return redirect()->guest($redirectTo);
         }
 

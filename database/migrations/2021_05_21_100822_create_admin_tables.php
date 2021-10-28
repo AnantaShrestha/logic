@@ -21,7 +21,6 @@ class CreateAdminTables extends Migration
             $table->string('email', 150)->unique();
             $table->string('avatar', 255)->nullable();
             $table->string('remember_token', 100)->nullable();
-            $table->string('theme', 100)->nullable();
             $table->timestamps();
         });
         Schema::create('roles', function (Blueprint $table) {

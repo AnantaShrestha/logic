@@ -12,7 +12,7 @@ class Adminuser extends Model implements AuthenticatableContract{
     protected $hidden  = [
         'password', 'remember_token',
     ];
-
+    protected static $allPermissions = null;
     public function roles()
     {
         return $this->belongsToMany(Role::class,'admin_role', 'admin_id', 'role_id');
@@ -61,5 +61,49 @@ class Adminuser extends Model implements AuthenticatableContract{
        $user=$this->findUser($id);
        $user->delete();
        return $user;
+    }
+
+     /**
+     * Get all permissions of user.
+     *
+     * @return mixed
+     */
+    public static function allPermissions()
+    {
+        if (self::$allPermissions === null) {
+            $user                 =\Auth::guard('admin')->user();
+            self::$allPermissions = $user->roles()->with('permissions')
+                ->get()->pluck('permissions')->flatten()
+                ->merge($user->permissions);
+        }
+        return self::$allPermissions;
+    }
+
+    public function isAdministrator(): bool
+    {
+        return $this->isRole('administrator');
+    }
+
+    public function isRole(string $role): bool
+    {
+        return $this->roles->pluck('slug')->contains($role);
+    }
+
+    public function can($ability, $arguments = []): bool
+    {
+        if ($this->isAdministrator()) {
+            return true;
+        }
+
+        if ($this->permissions->pluck('slug')->contains($ability)) {
+            return true;
+        }
+
+        return $this->roles->pluck('permissions')->flatten()->pluck('slug')->contains($ability);
+    }
+    
+    public function cannot(string $permission): bool
+    {
+        return !$this->can($permission);
     }
 }

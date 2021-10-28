@@ -40,6 +40,17 @@
 			        				)
 			        		}
 			        	},2000)
+			        },error:function(response){
+			        	setTimeout(function(){
+			        		icon.removeClass('fa-spinner')
+			        		icon.removeClass('fa-spin')
+			        		icon.addClass('fa-save')
+			        		swal(
+			        				'Error',
+			        				'Permission Denied',
+			        				'error'
+			        			)
+			        	},2000)
 			        }
 				})
 			})

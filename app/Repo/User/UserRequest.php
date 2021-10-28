@@ -14,7 +14,7 @@ class UserRequest extends FormRequest{
 			'name'=>'required|regex:/^[\pL\s\-]+$/u',
 			'username' => 'required|unique:admin_user,username,'.$this->id,
 			'email' => 'required|email|unique:admin_user,email,'.$this->id,
-			'password'=>'required|confirmed|min:6'
+			'password'=>$this->id == null ? 'required|confirmed|min:6' : 'nullable|confirmed|min:6' 
 		];
 	}
 }

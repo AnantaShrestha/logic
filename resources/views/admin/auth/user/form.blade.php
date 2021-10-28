@@ -40,14 +40,14 @@
 					</div>
 					<div class="form-group col-md-6">
 						{!! Form::label('password','Password') !!}
-						{!! Form::password('password',['class'=>'form-control','placeholder'=>'Password','data-validation'=>'required|confirm']) !!}
+						{!! Form::password('password',['class'=>'form-control','placeholder'=>'Password','data-validation'=>(isset($user)) ? '' : 'required|confirm']) !!}
 						@if ($errors->has('password'))
 							<span class="text-danger">{{ $errors->first('password') }}</span>
 						@endif
 					</div>
 					<div class="form-group col-md-6">
 						{!! Form::label('confirm','Confirmation') !!}
-						{!! Form::password('password_confirmation',['class'=>'form-control','placeholder'=>'Confirmation','data-validation'=>'required']) !!}
+						{!! Form::password('password_confirmation',['class'=>'form-control','placeholder'=>'Confirmation','data-validation'=>(isset($user)) ? '' : 'required']) !!}
 					</div>
 					<div class="form-group col-md-6">
 						{!! Form::label('roles','Select Roles') !!}
