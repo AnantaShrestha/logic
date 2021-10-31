@@ -19,8 +19,8 @@
             </td>
             <td>{{$permission->created_at->diffForHumans()}}</td>
             <td>
-                <a class="btn btn-primary" href="{{route('permission.edit',['id'=>$permission->id])}}">Edit</a>
-                <a class="btn btn-danger deleteAction" href="{{route('permission.delete',['id'=>$permission->id])}}">Delete</a>
+                <a class="btn btn-primary" href="{{route('permission.edit',['id'=>$permission->id])}}"><i class="fa fa-edit"></i></a>
+                <a class="btn btn-danger deleteAction" href="{{route('permission.delete',['id'=>$permission->id])}}"><i class="fa fa-trash"></i></a>
             </td>
 
         </tr>

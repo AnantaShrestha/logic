@@ -46,16 +46,18 @@ class UserRepo implements UserInterface{
 			'name'=>$request->name,
 			'username'=>$request->username,
 			'email'=>$request->email,
-			'password'=>$request->password
 		];
+		if($request->password){
+			$data['password']=$request->password;
+		}
 		$user=$this->adminuser->updateUser($data,$id);
 		$permission=$request->permission ?? [];
 		$role=$request->role ?? [];
+		$user->permissions()->detach();
+		$user->roles()->detach();
 		if($permission)
-			$user->permissions()->detach();
 			$user->permissions()->attach($permission);
 		if($role)
-			$user->roles()->detach();
 			$user->roles()->attach($role);
 		return $user;
 	}

@@ -1,16 +1,17 @@
 <?php 
 namespace App\Repo\Menu;
 use App\Models\Admin\Adminmenu;
+use App\Library\Classes\Admin;
 use Illuminate\Http\Request;
 
 class MenuRepo implements MenuInterface{
-	private $menu;
 	public function __construct(){
 		$this->menu=new Adminmenu();
 	}
 
 	public function getMenu(){
-		return $this->menu->orderBy('sort','asc')
+		return $this->menu
+		->orderBy('sort', 'asc')
 		->get();
 	}
 
@@ -67,4 +68,48 @@ class MenuRepo implements MenuInterface{
 		}
 		return $tree;
 	}
+
+
+	 /**
+     * Get list menu can visible for user
+     *
+     * @return  [type]  [return description]
+     */
+    public function getListVisible()
+    {
+       $list = $this->getMenu();
+       $listVisible = [];
+       foreach($list as $menu){
+	       	if (empty($menu->uri) || $menu->uri === 'admin/index') {
+	       		$listVisible[] = $menu;
+	       	} else{
+	       		$url = url($menu->uri);
+	       		if (Admin::user()->checkUrlAllowAccess($url)) {
+	       			$listVisible[] = $menu;
+	       		}
+	       	}
+       }
+       $listVisible = collect($listVisible);
+       $groupVisible = $listVisible->groupBy('parent_id');
+        foreach ($listVisible as $key => $value) {
+            if ((isset($groupVisible[$value->id]) && count($groupVisible[$value->id]) == 0)
+                || (!isset($groupVisible[$value->id]) && !$value->uri)
+            ){
+                unset($listVisible[$key]);
+                continue;
+            }
+        }
+        $listVisible=collect($listVisible);
+        $groupVisible = $listVisible->groupBy('parent_id');
+        foreach ($listVisible as $key => $value) {
+            if ((isset($groupVisible[$value->id]) && count($groupVisible[$value->id]) == 0)
+                || (!isset($groupVisible[$value->id]) && !$value->uri)
+            ){
+                unset($listVisible[$key]);
+                continue;
+            }
+        }
+        $listVisible=$listVisible->groupBy('parent_id');
+        return $listVisible;
+    }
 }

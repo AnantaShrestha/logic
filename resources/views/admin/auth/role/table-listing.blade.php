@@ -9,8 +9,8 @@
     </td>
     <td>{{$role->created_at->diffForHumans()}}</td>
     <td>
-        <a class="btn btn-primary" href="{{route('role.edit',['id'=>$role['id']])}}">Edit</a>
-        <a class="btn btn-danger deleteAction" href="{{route('role.delete',['id'=>$role['id']])}}">Delete</a>
+        <a class="btn btn-primary" href="{{route('role.edit',['id'=>$role['id']])}}"><i class="fa fa-edit"></i></a>
+        <a class="btn btn-danger deleteAction" href="{{route('role.delete',['id'=>$role['id']])}}"><i class="fa fa-trash"></i></a>
     </td>
 
 </tr>

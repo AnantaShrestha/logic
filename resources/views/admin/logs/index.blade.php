@@ -1,12 +1,11 @@
 @extends($ADMINTEMPLATEROOT.'layouts.default')
-
 @section('content')
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-lg-12">
 			<div class="card">
 				<div class="card-header">
-					<h4 class="card-title">List Of Role</h4>
+					<h4 class="card-title">List Of Errors & Logs</h4>
 				</div>
 				<div class="card-body">
 					<div class="search-box">
@@ -17,16 +16,18 @@
 							<thead>
 								<tr>
 									<th>S.No</th>
-									<th>Full Name</th>
-									<th>Username</th>
-									<th>Role</th>
-									<th>Permission</th>
-									<th>Created At</th>
+									<th>User</th>
+									<th>Method</th>
+									<th>Path</th>
+									<th>Ip</th>
+									<th>User Agent</th>
+									<th>Input</th>
+									<th>Time</th>
 									<th>Action</th>
 								</tr>
 							</thead>
 							<tbody id="table-data">
-								@include($ADMINTEMPLATEROOT.'auth.user.table-listing')
+								@include($ADMINTEMPLATEROOT.'logs.table-listing')
 						   </tbody>
 					</table>
 				</div>
@@ -36,5 +37,5 @@
 </div>
 @endsection
 @push('scripts')
-@include($ADMINTEMPLATEROOT.'scripts.dataTable')
+	@include($ADMINTEMPLATEROOT.'scripts.dataTable')
 @endpush

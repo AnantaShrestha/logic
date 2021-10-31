@@ -1,3 +1,6 @@
+@php
+$url=str_replace('index','pagination',request()->url());
+@endphp
 <script type="text/javascript">
 	this.dataTableInitial=function(){
 		let _this=this

@@ -3,7 +3,9 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use App\Http\ViewComposers\AdminmenuComposer;
 use App\Repo\Menu\MenuRepo;
+
 class ViewComposerServiceProvider extends ServiceProvider
 {
     /**
@@ -14,7 +16,7 @@ class ViewComposerServiceProvider extends ServiceProvider
 
     public function register()
     {
-        //
+        
     }
 
     /**
@@ -24,6 +26,11 @@ class ViewComposerServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-         view()->share('menus',(new MenuRepo)->getMenu()->groupBy('parent_id'));
+        view()->composer(
+            [
+                'admin.layouts.sidebar',
+            ],
+            AdminmenuComposer::class
+        );
     }
 }

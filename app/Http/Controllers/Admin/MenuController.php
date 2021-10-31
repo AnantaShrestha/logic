@@ -15,6 +15,7 @@ class MenuController extends BackendController{
 
 	public function index(){
 		$data=[
+			'menus'=>$this->menurepo->getMenu()->groupBy('parent_id'),
 			'getTreeMenu'=>$this->menurepo->getTreeMenu(),
 			'urlList' =>$this->routeList()
 		];
@@ -31,6 +32,7 @@ class MenuController extends BackendController{
 
 	public function edit($id){
 		$data=[
+			'menus'=>$this->menurepo->getMenu()->groupBy('parent_id'),
 			'getTreeMenu'=>$this->menurepo->getTreeMenu(),
 			'urlList' =>$this->routeList(),
 			'menu'=>$this->menurepo->findMenu($id)

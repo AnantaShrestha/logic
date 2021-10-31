@@ -35,9 +35,9 @@ class Handler extends ExceptionHandler
     public function register()
     {
         $this->reportable(function (Throwable $exception,$request = null) {
-            $response = parent::render($request, $exception);
-            switch($response->status()){
-                case 404:
+            //$response = parent::render($request, $exception);
+           /* switch($response->status()){
+                case 400:
                     return view('errors.404');
                     break;
                 case 403:
@@ -45,8 +45,10 @@ class Handler extends ExceptionHandler
                     break;
                 case 500:
                     return view('errors.500');
+                default :
+                    return view('errors.404')
 
-            }
+            }*/
         });
     }
 }

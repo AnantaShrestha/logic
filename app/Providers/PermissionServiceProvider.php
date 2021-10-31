@@ -4,6 +4,8 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use App\Http\Middleware\PermissionMiddleware;
+use App\Http\Middleware\LogsOperation  ;
+
 class PermissionServiceProvider extends ServiceProvider
 {
     /**
@@ -13,12 +15,9 @@ class PermissionServiceProvider extends ServiceProvider
      */
     protected $routeMiddleware = [
       'admin.permission' => PermissionMiddleware::class,
+      'admin.log'=>LogsOperation::class,
     ];
-    protected $middlewareGroups = [
-        'admin' => [
-            'admin.permission',
-        ],
-    ];
+
     public function register()
     {
         $this->registerRouteMiddleware();
@@ -34,16 +33,27 @@ class PermissionServiceProvider extends ServiceProvider
         //
     }
 
+     /**
+     * The application's route middleware groups.
+     *
+     * @var array
+     */
+    protected function middlewareGroups()
+    {
+        return [
+            'admin' => config('middleware.admin'),
+        ];
+    }
+
     protected function registerRouteMiddleware()
     {
-        // register route middleware.
+         // register route middleware.
         foreach ($this->routeMiddleware as $key => $middleware) {
             app('router')->aliasMiddleware($key, $middleware);
         }
-
-        // register middleware group.
-        foreach ($this->middlewareGroups as $key => $middleware) {
-            app('router')->middlewareGroup($key, $middleware);
+         // register middleware group.
+        foreach ($this->middlewareGroups() as $key => $middleware) {
+            app('router')->middlewareGroup($key, array_values($middleware));
         }
     }
 

@@ -15,8 +15,8 @@
     </td>
     <td>{{$user->created_at->diffForHumans()}}</td>
     <td>
-        <a class="btn btn-primary" href="{{route('user.edit',['id'=>$user->id])}}">Edit</a>
-        <a class="btn btn-danger deleteAction" href="{{route('user.delete',['id'=>$user->id])}}">Delete</a>
+        <a class="btn btn-primary" href="{{route('user.edit',['id'=>$user->id])}}"><i class="fa fa-edit"></i></a>
+        <a class="btn btn-danger deleteAction" href="{{route('user.delete',['id'=>$user->id])}}"><i class="fa fa-trash"></i></a>
     </td>
 
 </tr>

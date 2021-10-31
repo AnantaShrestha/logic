@@ -31,7 +31,7 @@ class PermissionMiddleware
         if ($this->routeDefaultPass($request)) {
             return $next($request);
         }
-        if (!Admin::user()->allPermissions()->first(function ($modelPermission) use ($request) {
+        if (!Admin::user()->allPermissions()->first(function ($modelPermission){
             return $modelPermission->passRequest();
         })) {         
 

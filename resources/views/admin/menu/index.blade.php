@@ -15,7 +15,9 @@ $url=(isset($menu)) ? route('menu.update',['id'=>$menu['id']]) : route('menu.sto
 						<div class='col-lg-6'>
 							<div class="dd" id="menu-sort">
          						<ol class="dd-list">
-         							@include($ADMINTEMPLATEROOT.'menu.menulisting')
+         							@if($menus)
+         								@include($ADMINTEMPLATEROOT.'menu.menulisting')
+         							@endif
          						</ol>
          					</div>
          					<div class="menu-save-button">

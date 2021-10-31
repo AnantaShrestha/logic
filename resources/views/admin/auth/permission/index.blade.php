@@ -32,9 +32,6 @@
 	</div>
 </div>
 @endsection
-@php
-$url=route("permission.pagination");
-@endphp
 @push('scripts')
 @include($ADMINTEMPLATEROOT.'scripts.dataTable')
 @endpush
