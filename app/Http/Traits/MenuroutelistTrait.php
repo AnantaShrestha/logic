@@ -48,6 +48,7 @@ trait MenuroutelistTrait{
             $prefix.'menu/sorting',
             $prefix.'menu/edit/{id}',
             $prefix.'menu/delete/{id}',
+            $prefix.'logs/pagination'
 
         ];
     }

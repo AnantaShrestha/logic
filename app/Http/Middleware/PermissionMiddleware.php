@@ -23,7 +23,10 @@ class PermissionMiddleware
         if (Auth::guard('admin')->guest() && !$this->shouldPassThrough($request)) {
             return redirect()->guest(route('admin.login'));
         }
-
+        if($this->checkActvateorNot($request)){
+            return redirect()->route('admin.login')
+            ->with(['error'=>'Your account has been deactivated']);
+        }
         if (!empty($args) || $this->shouldPassThrough($request) || Admin::user()->isAdministrator()){
             return $next($request);
         }
@@ -69,6 +72,19 @@ class PermissionMiddleware
         $routeName = $request->route()->getName();
         $allowRoute = ['admin.deny', 'admin.index'];
         return in_array($routeName, $allowRoute);
+    }
+
+    /**
+     * check account is activate or not 
+    */
+    public function checkActvateorNot(Request $request){
+        if(Admin::user()->activate == 0){
+            Auth::guard('admin')->logout();
+            $request->session()->invalidate();
+            return true;
+        }else{
+            return false;
+        }
     }
 
     

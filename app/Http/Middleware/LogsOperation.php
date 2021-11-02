@@ -17,10 +17,9 @@ class LogsOperation
      */
     public function handle(Request $request, Closure $next)
     {
-        try {
+        try{
             (new LogsRepo)->createLogs($request);
         } catch (\Exception $exception) {
-                    // pass
         }
         return $next($request);
     }

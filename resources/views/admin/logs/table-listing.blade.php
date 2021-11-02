@@ -7,7 +7,7 @@
     <td>{{ $log->path }}</td>
     <td>{{$log->ip}}</td>
     <td>{{$log->user_agent}}</td>
-    <td>{{htmlspecialchars($log->input)}}</td>
+    <td style="width:100px">{{htmlspecialchars($log->input)}}</td>
     <td>{{$log->created_at}}</td>
     <td><a class="btn btn-danger deleteAction" href="{{route('logs.delete',['id'=>$log->id])}}"><i class="fa fa-trash"></i></a></td>
 </tr>

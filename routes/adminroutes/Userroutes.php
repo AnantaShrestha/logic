@@ -8,4 +8,5 @@ Route::group(['prefix'=>'user'],function(){
 	Route::get('edit/{id}',[App\Http\Controllers\Admin\Auth\UserController::class,'edit'])->name('user.edit');
 	Route::post('edit/{id}',[App\Http\Controllers\Admin\Auth\UserController::class,'update'])->name('user.update');
 	Route::get('delete/{id}',[App\Http\Controllers\Admin\Auth\UserController::class,'delete'])->name('user.delete');
+	Route::post('activate',[App\Http\Controllers\Admin\Auth\UserController::class,'accountActivateorNot'])->name('user.activate');
 });

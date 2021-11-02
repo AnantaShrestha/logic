@@ -68,4 +68,12 @@ class UserRepo implements UserInterface{
 		$user->roles()->detach();
 		return $user;
 	}
+
+
+	public function accountActivateorNot(Request $request){
+		$data=[
+			'activate'=>$request->activate
+		];
+		return $this->adminuser->updateUser($data,$request->id);
+	}
 }

@@ -38,6 +38,12 @@
 
 				</div>
 				<button type="submit" class="btn btn-primary">{{(isset($role)) ? 'Update Role' : 'Create Role'}}</button>
+				@if(isset($role))
+					<a href="{{route('role.create')}}" class="btn btn-success">Back to create</a>
+				@else
+					<a href="{{route('role.index')}}" class="btn btn-success">Back</a>
+
+				@endif
 				{!! Form::close() !!}
 			</div>
 		</div>

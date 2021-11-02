@@ -20,10 +20,13 @@
                         <div class="row no-gutters">
                             <div class="col-xl-12">
                                 <div class="auth-form">
+                                    @if(Session::has('error'))
+                                        <label class="control-label" for="inputError"><i class="fa fa-times-circle-o"></i>{{Session::get('error')}}</label>
+                                    @endif
                                     {!! Form::open(['url'=>route('admin.loginProcess'),'class'=>'form-data']) !!}
                                         <div class="form-group">
                                             <strong>{!! Form::label('username', 'Username') !!}</strong>
-                                            {!! Form::text('username',old('username'),['class'=>'form-control','placeholder'=>'Username','data-required'=>'required']) !!}
+                                            {!! Form::text('username',old('username'),['class'=>'form-control','placeholder'=>'Username','data-validation'=>'required']) !!}
                                             @if($errors->has('username'))
                                             @foreach($errors->get('username') as $message)
                                             <label class="control-label" for="inputError"><i class="fa fa-times-circle-o"></i>{{$message}}</label><br>
@@ -32,7 +35,7 @@
                                         </div>
                                         <div class="form-group">
                                            <strong>{!!Form::label('password', 'Password') !!}</strong>
-                                            {!! Form::password('password',['class'=>'form-control','placeholder'=>'Password','data-required'=>'required']) !!}
+                                            {!! Form::password('password',['class'=>'form-control','placeholder'=>'Password','data-validation'=>'required']) !!}
                                             @if($errors->has('password'))
                                             @foreach($errors->get('password') as $message)
                                             <label class="control-label" for="inputError"><i class="fa fa-times-circle-o"></i>{{$message}}</label><br>
@@ -67,4 +70,4 @@
 </body>
 
 </html>
-    @include($ADMINTEMPLATEROOT.'scripts.validation')
+@include($ADMINTEMPLATEROOT.'scripts.validation')

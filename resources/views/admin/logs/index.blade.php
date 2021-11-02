@@ -21,7 +21,7 @@
 									<th>Path</th>
 									<th>Ip</th>
 									<th>User Agent</th>
-									<th>Input</th>
+									<th style="width:100px">Input</th>
 									<th>Time</th>
 									<th>Action</th>
 								</tr>

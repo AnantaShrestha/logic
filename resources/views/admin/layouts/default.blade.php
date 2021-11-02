@@ -20,6 +20,14 @@
             <div class="sk-child sk-bounce3"></div>
         </div>
     </div>
+    <div class="ajax-loader">
+        <div class="loader">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+      </div>
+    </div>
     <div id="main-wrapper">
         @include($ADMINTEMPLATEROOT.'layouts.nav-header')
         @include($ADMINTEMPLATEROOT.'layouts.header')

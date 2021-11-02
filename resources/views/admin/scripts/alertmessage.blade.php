@@ -26,13 +26,21 @@
         				data:{
         					id:id
         				},
+        				beforeSend:function(){
+        					document.querySelector('.ajax-loader').style.display='flex';
+        				},
         				success:function(response){	
-	                        if (response.type === 'success') {
-	                        	target.parent().parent().remove()
-	                            swal("Done!", response.message, "success")
-	                        } else {
-	                            swal("Error!",'Something went wrong', "error");
-	                        }
+	                        setTimeout(function(){
+        						$('.ajax-loader').hide()
+	                        },1500)
+	                        setTimeout(function(){
+	                        	if (response.type === 'success') {
+	                        		target.parent().parent().remove()
+	                        		swal("Done!", response.message, "success")
+	                        	} else {
+	                        		swal("Error!",'Something went wrong', "error");
+	                        	}
+	                        },1550)
         				}
         			})
         		}else{

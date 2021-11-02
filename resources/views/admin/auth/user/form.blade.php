@@ -59,6 +59,12 @@
 					</div>
 				</div>
 				<button type="submit" class="btn btn-primary">{{(isset($user)) ? 'Update User' : 'Create User'}}</button>
+				@if(isset($user))
+					<a href="{{route('user.create')}}" class="btn btn-success">Back to create</a>
+				@else
+					<a href="{{route('user.index')}}" class="btn btn-success">Back</a>
+
+				@endif
 				{!! Form::close() !!}
 			</div>
 		</div>

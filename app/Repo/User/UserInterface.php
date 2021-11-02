@@ -10,5 +10,6 @@ interface UserInterface{
 	public function findUser($id);
 	public function updateUser(Request $request,$id);
 	public function deleteUser($id);
+	public function accountActivateorNot(Request $request);
 
 }

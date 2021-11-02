@@ -33,6 +33,12 @@
 
 				</div>
 				<button type="submit" class="btn btn-primary">{{(isset($permission)) ? 'Update Permission' : 'Create Permission'}}</button>
+				@if(isset($permission))
+					<a href="{{route('permission.create')}}" class="btn btn-success">Back to create</a>
+				@else
+					<a href="{{route('permission.index')}}" class="btn btn-success">Back</a>
+
+				@endif
 				{!! Form::close() !!}
 			</div>
 		</div>

@@ -6,6 +6,7 @@ use App\Repo\Role\RoleRepo;
 use App\Repo\User\UserRepo;
 use App\Repo\User\UserRequest;
 use App\Http\Traits\AdminroutelistTrait;
+use Illuminate\Http\Request;
 class UserController extends BackendController{
 	private $user,$role,$permission;
 	public function __construct(UserRepo $user,
@@ -73,5 +74,10 @@ class UserController extends BackendController{
 			$this->userrepo->deleteUser($id);
 			return response()->json(['message'=>'User deleted Successfully','type'=>'success']);
 		}
+	}
+
+	public function accountActivateorNot(Request $request){
+		$this->userrepo->accountActivateorNot($request);
+		return response()->json(['message'=>'User status changed successfully']);
 	}
 }

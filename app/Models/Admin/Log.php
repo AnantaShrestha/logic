@@ -14,7 +14,7 @@ class Log extends Model
     }
 
     public function scopeGetlogs($query){
-        return $query->orderBy('created_at','desc')->paginate(PAGINATION_NUMBER);
+        return $query->with('admin')->orderBy('created_at','desc')->paginate(PAGINATION_NUMBER);
     }
 
     public function getTableData($data){

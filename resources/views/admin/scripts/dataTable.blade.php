@@ -6,18 +6,23 @@ $url=str_replace('index','pagination',request()->url());
 		let _this=this
 		this.apiRequest=function(page,query){
 				let xhr=new XMLHttpRequest()
-					xhr.open('GET','{{$url}}?page='+page+'&query='+query+'',true)
-					xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest')
-					xhr.onload = function() {
-						if (xhr.status === 200) {  
-					  		//console.log(xhr.response)
-					  		document.querySelector('#table-data').innerHTML=xhr.response
-					    }
-					    else{
-					       	//console.log(`Request failed, this is the response: ${xhr.responseText}`)
-					    }
+					xhr.onreadystatechange = function() {
+						document.querySelector('.ajax-loader').style.display='flex';
+						setTimeout(function(){
+        					document.querySelector('.ajax-loader').style.display='none';
+	                    },1500)
+						setTimeout(function(){
+							if (xhr.status === 200 && xhr.readyState === 4) {  
+					  			document.querySelector('#table-data').innerHTML=xhr.response
+					  		}
+						  	else{
+						  		swal("Error!",'Something went wrong', "error");
+						  	}
+						},1550)
 				 	};
-				xhr.send()
+				 	xhr.open('GET','{{$url}}?page='+page+'&query='+query+'',true)
+					xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest')
+					xhr.send()
 		},
 		this.dataTableEventListener=function(selector){
 			let page,

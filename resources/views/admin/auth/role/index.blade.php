@@ -9,6 +9,7 @@
 				</div>
 				<div class="card-body">
 					<div class="search-box">
+						<a href="{{route('role.create')}}" class="btn btn-success"><i class="fa fa-plus"></i></a>
 						<input id="dataTableSearch" type="text" class="form-control" name="search" placeholder="Search">
 					</div>
 					<div class="table-responsive" >
