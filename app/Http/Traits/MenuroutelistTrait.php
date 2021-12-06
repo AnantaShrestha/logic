@@ -44,6 +44,7 @@ trait MenuroutelistTrait{
             $prefix.'user/pagination',
             $prefix.'user/edit/{id}',
             $prefix.'user/delete/{id}',
+            $prefix.'user/activate',
             $prefix.'menu/create',
             $prefix.'menu/sorting',
             $prefix.'menu/edit/{id}',
