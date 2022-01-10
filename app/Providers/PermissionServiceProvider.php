@@ -4,8 +4,8 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use App\Http\Middleware\PermissionMiddleware;
-use App\Http\Middleware\LogsOperation  ;
-
+use App\Http\Middleware\LogsOperation;
+use App\Http\Middleware\MailService;
 class PermissionServiceProvider extends ServiceProvider
 {
     /**
@@ -16,6 +16,7 @@ class PermissionServiceProvider extends ServiceProvider
     protected $routeMiddleware = [
       'admin.permission' => PermissionMiddleware::class,
       'admin.log'=>LogsOperation::class,
+      'admin.mail'=>MailService::class,
     ];
 
     public function register()

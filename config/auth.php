@@ -33,7 +33,7 @@ return [
     |
     | Supported: "session", "token"
     |
-    */
+   w */
 
     'guards' => [
         'web' => [
